@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 const Navbar = (props) => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className={`navbar navbar-expand-lg  navbar-${props.mode} bg-${props.mode} `}>
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">{props.brandname !== "" ? props.brandname : "Must_be_string"}</a>
+          <a className="navbar-brand" href="/">{props.brandname}</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -18,10 +18,10 @@ const Navbar = (props) => {
                 <a className="nav-link" href="/">{props.about}</a>
               </li>
             </ul>
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <div class={`form-check form-switch text-${props.mode === 'light' ? 'dark' : 'light'}`}>
+              <input class="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+              <label class="form-check-label" htmlFor="flexSwitchCheckDefault">Enable dark mode</label>
+            </div>
           </div>
         </div>
       </nav>
