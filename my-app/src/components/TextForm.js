@@ -5,12 +5,14 @@ const TextForm = (props) => {
         console.log('Button Clicked!' + Text)
         let NewText=Text.toUpperCase()
         SetText(NewText)
+        props.ShowAlert("Converted to UpperCase","success")
 
     }
     const handleuplower=()=>{
         console.log('Button Clicked!' + Text)
         let NewText=Text.toLowerCase()
         SetText(NewText)
+        props.ShowAlert("Converted to LowerCase","success")
 
     }
 
@@ -22,6 +24,7 @@ const TextForm = (props) => {
     const handleClear=()=>{
         // console.log("On changed")
         SetText("")
+        props.ShowAlert("Text Cleared!","success")
        
     }
     const handleCopy=()=>{
@@ -29,12 +32,14 @@ const TextForm = (props) => {
         let textcopy=document.getElementById('mybox')
         textcopy.select();
         navigator.clipboard.writeText(textcopy.value)
+        props.ShowAlert("Text Copied!","success")
     }
 
     const handlespaces=()=>{
         console.log("clearTexted")
         let extratext=Text.split(/[ ]+/);
         SetText(extratext.join(" "))
+        props.ShowAlert("Spaces Removed","success")
     }
 
 
