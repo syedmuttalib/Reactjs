@@ -48,33 +48,33 @@ const TextForm = (props) => {
         <>
         <div className='container my-5'  style={{color:props.mode === 'dark' ? 'white' : '#09092b'}}>
             <div className="mb-3" >
-                <h1 >{props.heading}</h1>
-                <textarea className="form-control" style={{backgroundColor:props.mode === 'dark' ? 'grey' : 'white', color:props.mode === 'dark' ? 'white' : '#09092b'}} value={Text} onChange={handleOnchange} id="mybox" rows="8"></textarea>
+                <h1 className='my-3'>{props.heading}</h1>
+                <textarea className="form-control" style={{backgroundColor:props.mode === 'dark' ? '#33436f' : 'white', color:props.mode === 'dark' ? 'white' : '#09092b'}} value={Text} onChange={handleOnchange} id="mybox" rows="8"></textarea>
             </div>
-            <button className="btn btn-primary mx-2"
+            <button disabled={Text.length===0}className="btn btn-primary mx-1 my-1"
             onClick={handleup}
             >
              Convert to uppercase
             </button>
 
-            <button className="btn btn-primary mx-2"
+            <button disabled={Text.length===0} className="btn btn-primary mx-1 my-1"
             onClick={handleuplower}
             >
              Convert to Lowercase
             </button>
 
-            <button className="btn btn-primary mx-2 my-3"
+            <button disabled={Text.length===0} className="btn btn-primary mx-1 my-1 "
             onClick={handleCopy}
             >
              Copy Text
             </button>
-            <button className="btn btn-primary mx-2"
+            <button disabled={Text.length===0} className="btn btn-primary mx-1 my-1"
             onClick={handlespaces}
             >
              Remove extra spaces
             </button>
 
-            <button className="btn btn-primary mx-2"
+            <button disabled={Text.length===0} className="btn btn-primary mx-1 my-1"
             onClick={handleClear}
             >
              Clear Test
@@ -82,10 +82,10 @@ const TextForm = (props) => {
         </div>
         <div className="container my-4" style={{color:props.mode === 'dark' ? 'white' : '#09092b'}}>
         <h1>Your Text summary</h1>
-        <p>{Text.split(" ").length } words and {Text.length} charecter</p>
-        <p>{0.008 * Text.split(" ").length} Minitues to read</p>
+        <p>{Text.split(" ").filter((element)=>{return element.length!==0}).length} words and {Text.length} charecter</p>
+        <p>{0.008 * Text.split(" ").filter((element)=>{return element.length!==0}).length} Minitues to read</p>
         <h2>Preview</h2>
-        <p>{Text.length>0 ? Text:"Enter something in the textbox above to preview it here"}</p>
+        <p>{Text.length>0 ? Text:"Nothing to preview!"}</p>
         </div>
 
         </>
